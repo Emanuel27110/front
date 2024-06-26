@@ -10,7 +10,7 @@ const ProductsContext = ({ children }) => {
 
   const getProductos = async () => {
     try {
-      const response = await axios.get("https://inventoryiq.onrender.com/api/products");
+      const response = await axios.get("https://back-ybrm.onrender.com/api/products");
       setProductos(response.data);
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ const ProductsContext = ({ children }) => {
   const addProductos = async (producto) => {
     try {
       const response = await axios.post(
-        "https://inventoryiq.onrender.com/api/agregarProduct",
+        "https://back-ybrm.onrender.com/api/agregarProduct",
         producto
       );
       setProductos([...productos, response.data]);
@@ -39,7 +39,7 @@ const ProductsContext = ({ children }) => {
   const editarProducto = async (producto) => {
     try {
       await axios.put(
-        `https://inventoryiq.onrender.com/api/editarProduct/${producto._id}`,
+        `https://back-ybrm.onrender.com/api/editarProduct/${producto._id}`,
         producto
       );
 
@@ -54,7 +54,7 @@ const ProductsContext = ({ children }) => {
   const deleteProductos = async (_id) => {
 
     try {
-      await axios.delete(`https://inventoryiq.onrender.com/api/eliminarProduct/${_id}`);
+      await axios.delete(`https://back-ybrm.onrender.com/api/eliminarProduct/${_id}`);
       setProductos(productos.filter((producto) => producto._id !== _id));
     } catch (error) {
       console.log(error);

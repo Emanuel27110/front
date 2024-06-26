@@ -17,7 +17,7 @@ const UsuariosContext = ({children}) => {
 
     const getUsers = async () => {
         try{
-            const response = await axios.get(`https://inventoryiq.onrender.com/api/users`);
+            const response = await axios.get(`https://back-ybrm.onrender.com/api/users`);
             setUsuarios(response.data)
         } catch(error) {
             console.log(error)
@@ -27,7 +27,7 @@ const UsuariosContext = ({children}) => {
 
     const addUser = async (usuario) => {
         try {
-            let response = await axios.post(`https://inventoryiq.onrender.com/api/register`, usuario);
+            let response = await axios.post(`https://back-ybrm.onrender.com/api/register`, usuario);
             setUsuarios([...usuarios, response.data]);
             return response; // Devuelve la respuesta de la solicitud
         } catch (error) {
@@ -38,7 +38,7 @@ const UsuariosContext = ({children}) => {
     
     const editarUsuario = async (usuario) => {
         try {
-            let response = await axios.patch(`https://inventoryiq.onrender.com/api/user/${usuario._id}`, usuario);
+            let response = await axios.patch(`https://back-ybrm.onrender.com/api/user/${usuario._id}`, usuario);
             await getUsers(); // Actualiza la lista de usuarios después de editar
             return response; // Devuelve la respuesta de la solicitud
         } catch (error) {
@@ -50,7 +50,7 @@ const UsuariosContext = ({children}) => {
 
     const deleteUsuarios = async (_id) => {
         try {
-            await axios.delete(`https://inventoryiq.onrender.com/api/user/delete/${_id}`)
+            await axios.delete(`https://back-ybrm.onrender.com/api/user/delete/${_id}`)
             setUsuarios(usuarios.filter((usuario) => usuario._id !==_id));
 
             const usuarioActual = JSON.parse(localStorage.getItem("user"));
@@ -73,7 +73,7 @@ const UsuariosContext = ({children}) => {
 
     const loginUser = async (usuario) => {
         try {
-            const response = await axios.post(`https://inventoryiq.onrender.com/api/login`, usuario);
+            const response = await axios.post(`https://back-ybrm.onrender.com/api/login`, usuario);
             const {token} = response.data
             const decoToken = jwtDecode(token)
             localStorage.setItem("user", JSON.stringify(decoToken));

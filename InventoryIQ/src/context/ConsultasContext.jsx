@@ -10,7 +10,7 @@ const ConsultasContext = ({ children }) => {
   //GET CONSULTAS
   const getConsultas = async () => {
     try {
-      const response = await axios.get('https://inventoryiq.onrender.com/api/contact');
+      const response = await axios.get('https://back-ybrm.onrender.com/api/contact');
       setConsultas(response.data);
     } catch (error) {
       console.log(error); 
@@ -19,7 +19,7 @@ const ConsultasContext = ({ children }) => {
   //ADD CONSULTAS
   const addConsultas = async (consulta) => {
     try {
-      const response = await axios.post('https://inventoryiq.onrender.com/api/newConsulta', consulta);
+      const response = await axios.post('https://back-ybrm.onrender.com/api/newConsulta', consulta);
         setConsultas(response.data);
     } catch (error) {
       console.log(error); 
@@ -29,7 +29,7 @@ const ConsultasContext = ({ children }) => {
   // DELETE CONSULTAS
   const deleteConsultas = async (id) => {
     try {
-      await axios.delete(`https://inventoryiq.onrender.com/api/deleteConsulta/${id}`);
+      await axios.delete(`https://back-ybrm.onrender.com/api/deleteConsulta/${id}`);
       setConsultas(consultas => consultas.filter(consulta => consulta._id !== String(id))); 
     } catch (error) {
       console.log(error); 
